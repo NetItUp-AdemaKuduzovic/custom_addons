@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <data noupdate="1">
+            <!-- Activity Records -->
+            <record id="assistenza_tecnica" model="new_timesheet.activity">
+                <field name="short_code">P</field>
+                <field name="description">Assistenza tecnica</field>
+            </record>
+            <record id="assistenza_interna" model="new_timesheet.activity">
+                <field name="short_code">PN</field>
+                <field name="description">Assistenza interna</field>
+            </record>
+            <record id="supervisione_tecnica" model="new_timesheet.activity">
+                <field name="short_code">PR</field>
+                <field name="description">Supervisione tecnica</field>
+            </record>
+            <record id="backoffice_operativo" model="new_timesheet.activity">
+                <field name="short_code">B</field>
+                <field name="description">Backoffice operativo</field>
+            </record>
+            <record id="backoffice_interno" model="new_timesheet.activity">
+                <field name="short_code">BN</field>
+                <field name="description">Backoffice interno</field>
+            </record>
+            <record id="supervisione_backoffice" model="new_timesheet.activity">
+                <field name="short_code">BR</field>
+                <field name="description">Supervisione backoffice</field>
+            </record>
+            <record id="varie" model="new_timesheet.activity">
+                <field name="short_code">SV</field>
+                <field name="description">Varie, non definibile</field>
+            </record>
+
+            <!-- Service Records -->
+            <record id="assemblaggio" model="new_timesheet.service">
+                <field name="short_code">ATA</field>
+                <field name="description">Assemblaggio</field>
+            </record>
+            <record id="cloud_architect" model="new_timesheet.service">
+                <field name="short_code">ATC</field>
+                <field name="description">Cloud Architect</field>
+            </record>
+            <record id="developer" model="new_timesheet.service">
+                <field name="short_code">ATD</field>
+                <field name="description">Developer</field>
+            </record>
+            <record id="hosting" model="new_timesheet.service">
+                <field name="short_code">ATH</field>
+                <field name="description">Hosting</field>
+            </record>
+            <record id="impianistica" model="new_timesheet.service">
+                <field name="short_code">ATI</field>
+                <field name="description">Impianistica</field>
+            </record>
+            <record id="digital_marketing" model="new_timesheet.service">
+                <field name="short_code">ATM</field>
+                <field name="description">Digital marketing</field>
+            </record>
+            <record id="networking" model="new_timesheet.service">
+                <field name="short_code">ATN</field>
+                <field name="description">Networking</field>
+            </record>
+             <record id="cio" model="new_timesheet.service">
+                <field name="short_code">ATO</field>
+                <field name="description">Cio</field>
+            </record>
+            <record id="server_storage" model="new_timesheet.service">
+                <field name="short_code">ATS</field>
+                <field name="description">Server storage</field>
+            </record>
+            <record id="telefonia" model="new_timesheet.service">
+                <field name="short_code">ATT</field>
+                <field name="description">Telefonia</field>
+            </record>
+            <record id="end_user" model="new_timesheet.service">
+                <field name="short_code">ATU</field>
+                <field name="description">End user e postazioni di lavoro</field>
+            </record>
+            <record id="audio_video" model="new_timesheet.service">
+                <field name="short_code">ATV</field>
+                <field name="description">Audio video</field>
+            </record>
+            <record id="cybersecurity" model="new_timesheet.service">
+                <field name="short_code">ATY</field>
+                <field name="description">Cybersecurity</field>
+            </record>
+            <record id="webmaster" model="new_timesheet.service">
+                <field name="short_code">ATW</field>
+                <field name="description">Webmaster</field>
+            </record>
+        </data>
+    </odoo>

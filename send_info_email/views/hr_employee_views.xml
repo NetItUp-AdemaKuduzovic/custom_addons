@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Here I will inherit xml hr_employee_views / settings to add a new field on UI-->
+<odoo>
+    <data>
+        <record id="hr_employee_send_email" model="ir.ui.view">
+            <field name="name">hr.employee.send.email</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <group name="identification_group" position="inside">
+                    <field name="receive_email" invisible="not work_email"/>
+                </group>
+            </field>
+        </record>
+    </data>
+</odoo>

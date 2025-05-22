@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo noupdate="0">
+
+    <record id="attendance_email_notification_template" model="mail.template">
+        <field name="name">Attendance Email Notification</field>
+        <field name="email_from"></field>
+        <field name="subject">Attendance Notification</field>
+        <field name="email_to">{{object.employee_id.work_email}}</field>
+        <field name="model_id" ref="hr_attendance.model_hr_attendance"/>
+        <field name="body_html">
+            <![CDATA[
+
+                <p>Hello <t t-out="object.employee_id.name"/>,</p>
+
+                <t t-set="create_user" t-value="object.create_uid.name"/>
+                <t t-set="edit_user" t-value="object.write_uid.name"/> 
+                <t t-set="logged_user" t-value="user.name"/>   
+                <t t-set="action_messages" t-value="{
+                    'created': 'Your attendance record was created by ' + create_user + ' with the following data:',
+                    'edited': 'Your attendance record was edited by ' + edit_user,
+                    'deleted': 'Your attendance record with the following data was deleted by ' + logged_user
+                }"/>
+
+                <t t-if="ctx.get('action') == 'edited'">
+                    <p><t t-out="action_messages['edited']"/></p>
+                    <p>The following changes were made:</p>
+                    <ul>
+                        <t t-if="ctx.get('old_values', {}).get('check_in')">
+                            <li>
+                                Check-in time updated from:
+                                <strong><t t-out="format_datetime(ctx['old_values']['check_in'], dt_format='dd/MM/yyyy HH:mm:ss')"/></strong>
+                                to
+                                <strong><t t-out="format_datetime(object.check_in, dt_format='dd/MM/yyyy HH:mm:ss')"/></strong>
+                            </li>
+                        </t>
+                        <t t-if="'check_out' in ctx.get('old_values', {})">
+                            <t t-if="ctx['old_values'].get('check_out')">
+                                <li>
+                                    Check-out time updated from:
+                                    <strong><t t-out="format_datetime(ctx['old_values']['check_out'], dt_format='dd/MM/yyyy HH:mm:ss')"/></strong>
+                                    to
+                                    <strong><t t-out="format_datetime(object.check_out, dt_format='dd/MM/yyyy HH:mm:ss')"/></strong>
+                                </li>
+                            </t>
+                            <t t-else="">
+                                <li>
+                                    Check-out time: <strong><t t-out="format_datetime(object.check_out, dt_format='dd/MM/yyyy HH:mm:ss')"/></strong>
+                                </li>
+                            </t>
+                        </t>
+                    </ul>
+                </t>
+                
+                <t t-else="">
+                    <t t-if="ctx.get('action') == 'created'">
+                        <p>
+                            <t t-out="action_messages['created']"/>
+                        </p>
+                    </t>
+                    <t t-if="ctx.get('action') == 'deleted'">
+                        <p>
+                            <t t-out="action_messages['deleted']"/>
+                        </p>
+                    </t>
+                    <ul>
+                        <li>
+                            Check-in time: <t t-out="format_datetime(object.check_in, dt_format='dd/MM/yyyy HH:mm:ss')"/>
+                        </li>
+                        <t t-if="object.check_out">
+                            <li>
+                                Check-out time: <t t-out="format_datetime(object.check_out, dt_format='dd/MM/yyyy HH:mm:ss')"/>
+                            </li>
+                        </t>
+                        <t t-else>
+                            <li>
+                                Check-out time: <em>Not yet checked out</em>
+                            </li>
+                        </t>
+                    </ul>
+                </t>
+
+                <p>Regards,
+                <br>HR Team</p>
+            ]]>
+        </field>
+    </record>
+</odoo>

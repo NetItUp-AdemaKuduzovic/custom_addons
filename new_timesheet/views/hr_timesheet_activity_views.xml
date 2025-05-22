@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+    <odoo>
+
+        <record id="new_timesheet_activity_list_view" model="ir.ui.view">
+            <field name="name">new_timesheet.activity.list</field>
+            <field name="model">new_timesheet.activity</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="short_code"/>
+                    <field name="description"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="new_timesheet_activity_form_view" model="ir.ui.view">
+            <field name="name">new_timesheet.activity.form</field>
+            <field name="model">new_timesheet.activity</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="short_code"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="new_timesheet_activity_action" model="ir.actions.act_window">
+            <field name="name">Activities</field>
+            <field name="res_model">new_timesheet.activity</field>
+            <field name="view_mode">list,form</field>
+            <field name="view_id" ref="new_timesheet_activity_list_view"/>
+        </record>
+    </odoo>

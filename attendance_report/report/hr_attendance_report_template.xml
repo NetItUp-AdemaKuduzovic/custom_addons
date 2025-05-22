@@ -1,0 +1,83 @@
+<!--QWeb template-->
+<odoo>
+    <template id="hr_attendance_report_details">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout"> 
+
+                <t t-set="set_employee" t-value="docs.mapped('employee_id')" /> <!--Unique set of employees (hr.employees)-->
+                
+                <t t-foreach="set_employee" t-as="emp">
+                    <div class="page" style="page-break-after:always;">
+
+                        <!--Name and badge_id(if available) of an employee-->
+                        <h2><strong>Employee:</strong> <t t-esc="emp.name" /></h2>
+                        <t t-if="emp.barcode">
+                            <h4><strong>Badge ID: </strong><t t-esc="emp.barcode"/></h4>
+                        </t>
+                        <t t-else=""></t>
+                        <hr/>
+
+                        <!--Initialization of variables-->
+                        <t t-set="curr_date" t-value="''"/>
+                        <t t-set="attendance_by_user" t-value="docs.filtered(lambda a: a.employee_id == emp).sorted(key=lambda o: o.check_in)"/>  <!--Sorted by check_in and filtered by user, rerturns RecordSet-->
+
+                        <table class="table" style="width:100%;" border="1">
+                        
+                            <thead>
+                                <tr>
+                                    <th style="padding:5px;">Date</th>
+                                    <th style="padding:5px;">Timbrature</th>
+                                    <th style="padding:5px;">Mode</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <t t-foreach="attendance_by_user" t-as="attendance"> 
+
+                                    <t t-set="date_att" t-value="context_timestamp(attendance.check_in).strftime('%d/%m/%Y')"/>
+                                    
+                                    <t t-if="date_att != curr_date">
+                                        <t t-set="same_day_att" t-value="attendance_by_user.filtered(lambda a: context_timestamp(a.check_in).strftime('%d/%m/%Y') == date_att)"/>
+                                        
+                                        <tr>
+                                            <!-- Date Column -->
+                                            <td style="padding:5px;">
+                                                <t t-esc="date_att"/>
+                                            </td>
+
+                                            <!-- Timbrature -->
+                                            <td style="padding:5px;">
+                                                <t t-foreach="same_day_att" t-as="row">
+                                                        <t t-esc="context_timestamp(row.check_in).strftime('%H:%M')"/>
+                                                        <span>-</span>
+                                                        <t t-if="row.check_out">
+                                                            <t t-esc="context_timestamp(row.check_out).strftime('%H:%M')"/>
+                                                        </t>
+                                                        <span>/</span>
+                                                </t>
+                                            </td>
+
+                                            <!-- Modes -->
+                                            <td style="padding:5px;">
+                                                <t t-foreach="same_day_att" t-as="row">
+                                                    <t t-esc="row.in_mode"/>
+                                                    <span>-</span>
+                                                    <t t-if="row.out_mode">
+                                                        <t t-esc="row.out_mode"/>
+                                                    </t>
+                                                    <span>/</span>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                        <t t-set="curr_date" t-value="date_att"/>
+                                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            
+            </t> 
+        </t>
+    </template>
+</odoo>

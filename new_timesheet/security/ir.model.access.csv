@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+new_timesheet.access_new_timesheet_activity,access_new_timesheet_activity,new_timesheet.model_new_timesheet_activity,base.group_user,1,0,0,0
+new_timesheet.access_new_timesheet_service,access_new_timesheet_service,new_timesheet.model_new_timesheet_service,base.group_user,1,0,0,0
+new_timesheet.admin_new_timesheet_activity,access_new_timesheet_activity,new_timesheet.model_new_timesheet_activity,base.group_system,1,1,1,1
+new_timesheet.admin_new_timesheet_service,access_new_timesheet_service,new_timesheet.model_new_timesheet_service,base.group_system,1,1,1,1
+
