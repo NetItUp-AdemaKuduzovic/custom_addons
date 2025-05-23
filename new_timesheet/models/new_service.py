@@ -10,7 +10,7 @@ class newService(models.Model):
 
     name = fields.Char(compute="_compute_name", store=True)
     short_code = fields.Char(required = True, string="Code")
-    description = fields.Text(required = True)
+    description = fields.Text(required = True, translate=True)
 
     @api.depends("short_code", "description")
     def _compute_name(self):

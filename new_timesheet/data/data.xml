@@ -4,37 +4,37 @@
             <!-- Activity Records -->
             <record id="assistenza_tecnica" model="new_timesheet.activity">
                 <field name="short_code">P</field>
-                <field name="description">Assistenza tecnica</field>
+                <field name="description">Technical assistance</field>
             </record>
             <record id="assistenza_interna" model="new_timesheet.activity">
                 <field name="short_code">PN</field>
-                <field name="description">Assistenza interna</field>
+                <field name="description">Internal Support</field>
             </record>
             <record id="supervisione_tecnica" model="new_timesheet.activity">
                 <field name="short_code">PR</field>
-                <field name="description">Supervisione tecnica</field>
+                <field name="description">Technical Supervision</field>
             </record>
             <record id="backoffice_operativo" model="new_timesheet.activity">
                 <field name="short_code">B</field>
-                <field name="description">Backoffice operativo</field>
+                <field name="description">Operational back office</field>
             </record>
             <record id="backoffice_interno" model="new_timesheet.activity">
                 <field name="short_code">BN</field>
-                <field name="description">Backoffice interno</field>
+                <field name="description">Internal back office</field>
             </record>
             <record id="supervisione_backoffice" model="new_timesheet.activity">
                 <field name="short_code">BR</field>
-                <field name="description">Supervisione backoffice</field>
+                <field name="description">Back office supervision</field>
             </record>
             <record id="varie" model="new_timesheet.activity">
                 <field name="short_code">SV</field>
-                <field name="description">Varie, non definibile</field>
+                <field name="description">Various, not definable</field>
             </record>
 
             <!-- Service Records -->
             <record id="assemblaggio" model="new_timesheet.service">
                 <field name="short_code">ATA</field>
-                <field name="description">Assemblaggio</field>
+                <field name="description">Assembly</field>
             </record>
             <record id="cloud_architect" model="new_timesheet.service">
                 <field name="short_code">ATC</field>
@@ -50,7 +50,7 @@
             </record>
             <record id="impianistica" model="new_timesheet.service">
                 <field name="short_code">ATI</field>
-                <field name="description">Impianistica</field>
+                <field name="description">Systems engineering</field>
             </record>
             <record id="digital_marketing" model="new_timesheet.service">
                 <field name="short_code">ATM</field>
@@ -70,11 +70,11 @@
             </record>
             <record id="telefonia" model="new_timesheet.service">
                 <field name="short_code">ATT</field>
-                <field name="description">Telefonia</field>
+                <field name="description">Telephony</field>
             </record>
             <record id="end_user" model="new_timesheet.service">
                 <field name="short_code">ATU</field>
-                <field name="description">End user e postazioni di lavoro</field>
+                <field name="description">End users and workstations</field>
             </record>
             <record id="audio_video" model="new_timesheet.service">
                 <field name="short_code">ATV</field>

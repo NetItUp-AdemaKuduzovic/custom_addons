@@ -1,0 +1,223 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* new_timesheet
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-23 13:23+0000\n"
+"PO-Revision-Date: 2025-05-23 13:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: new_timesheet
+#: model:ir.actions.act_window,name:new_timesheet.new_timesheet_activity_action
+#: model:ir.ui.menu,name:new_timesheet.menu_hr_timesheet_activity
+msgid "Activities"
+msgstr "Attività"
+
+#. module: new_timesheet
+#: model:ir.model,name:new_timesheet.model_new_timesheet_activity
+msgid "Activities from eSolver"
+msgstr "Attività da eSolver"
+
+#. module: new_timesheet
+#: model:ir.model.fields,field_description:new_timesheet.field_account_analytic_line__activity_id
+msgid "Activity"
+msgstr "Attività"
+
+#. module: new_timesheet
+#: model:ir.model,name:new_timesheet.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Riga analitica"
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.assemblaggio
+msgid "Assembly"
+msgstr "Assemblaggio"
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.audio_video
+msgid "Audio video"
+msgstr ""
+
+#. module: new_timesheet
+#: model:new_timesheet.activity,description:new_timesheet.supervisione_backoffice
+msgid "Back office supervision"
+msgstr "Supervisione backoffice"
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.cio
+msgid "Cio"
+msgstr ""
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.cloud_architect
+msgid "Cloud Architect"
+msgstr ""
+
+#. module: new_timesheet
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_activity__short_code
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_service__short_code
+msgid "Code"
+msgstr "Codice"
+
+#. module: new_timesheet
+#: model:ir.ui.menu,name:new_timesheet.hr_timesheet_menu_configuration_main
+msgid "Configuration"
+msgstr "Configurazione"
+
+#. module: new_timesheet
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_activity__create_uid
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_service__create_uid
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: new_timesheet
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_activity__create_date
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_service__create_date
+msgid "Created on"
+msgstr "Creato il"
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.cybersecurity
+msgid "Cybersecurity"
+msgstr ""
+
+#. module: new_timesheet
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_activity__description
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_service__description
+msgid "Description"
+msgstr "Descrizione"
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.developer
+msgid "Developer"
+msgstr ""
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.digital_marketing
+msgid "Digital marketing"
+msgstr ""
+
+#. module: new_timesheet
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_activity__display_name
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_service__display_name
+msgid "Display Name"
+msgstr "Nome da visualizzare"
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.end_user
+msgid "End users and workstations"
+msgstr "End user e postazioni di lavoro"
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.hosting
+msgid "Hosting"
+msgstr ""
+
+#. module: new_timesheet
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_activity__id
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_service__id
+msgid "ID"
+msgstr ""
+
+#. module: new_timesheet
+#: model:new_timesheet.activity,description:new_timesheet.assistenza_interna
+msgid "Internal Support"
+msgstr "Assistenza interna"
+
+#. module: new_timesheet
+#: model:new_timesheet.activity,description:new_timesheet.backoffice_interno
+msgid "Internal back office"
+msgstr "Backoffice interno"
+
+#. module: new_timesheet
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_activity__write_uid
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_service__write_uid
+msgid "Last Updated by"
+msgstr "Ultimo aggiornamento di"
+
+#. module: new_timesheet
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_activity__write_date
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_service__write_date
+msgid "Last Updated on"
+msgstr "Ultimo aggiornamento il"
+
+#. module: new_timesheet
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_activity__name
+#: model:ir.model.fields,field_description:new_timesheet.field_new_timesheet_service__name
+msgid "Name"
+msgstr "Nome"
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.networking
+msgid "Networking"
+msgstr ""
+
+#. module: new_timesheet
+#: model:new_timesheet.activity,description:new_timesheet.backoffice_operativo
+msgid "Operational back office"
+msgstr "Backoffice operativo"
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.server_storage
+msgid "Server storage"
+msgstr ""
+
+#. module: new_timesheet
+#: model:ir.model.fields,field_description:new_timesheet.field_account_analytic_line__service_id
+msgid "Service"
+msgstr "Servizio"
+
+#. module: new_timesheet
+#: model:ir.actions.act_window,name:new_timesheet.new_timesheet_service_action
+#: model:ir.ui.menu,name:new_timesheet.menu_hr_timesheet_service
+msgid "Services"
+msgstr "Servizi"
+
+#. module: new_timesheet
+#: model:ir.model,name:new_timesheet.model_new_timesheet_service
+msgid "Services from eSolver"
+msgstr "Servizi di eSolver"
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.impianistica
+msgid "Systems engineering"
+msgstr "Impianistica"
+
+#. module: new_timesheet
+#: model:new_timesheet.activity,description:new_timesheet.supervisione_tecnica
+msgid "Technical Supervision"
+msgstr "Supervisione tecnica"
+
+#. module: new_timesheet
+#: model:new_timesheet.activity,description:new_timesheet.assistenza_tecnica
+msgid "Technical assistance"
+msgstr "Assistenza tecnica"
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.telefonia
+msgid "Telephony"
+msgstr "Telefonia"
+
+#. module: new_timesheet
+#: model:ir.model.constraint,message:new_timesheet.constraint_new_timesheet_activity_unique_short_code
+#: model:ir.model.constraint,message:new_timesheet.constraint_new_timesheet_service_unique_short_code
+msgid "The short code must be unique."
+msgstr "Il codice breve deve essere univoco"
+
+#. module: new_timesheet
+#: model:new_timesheet.activity,description:new_timesheet.varie
+msgid "Various, not definable"
+msgstr "Varie, non definibile"
+
+#. module: new_timesheet
+#: model:new_timesheet.service,description:new_timesheet.webmaster
+msgid "Webmaster"
+msgstr ""

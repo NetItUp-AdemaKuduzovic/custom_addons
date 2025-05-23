@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "new timesheet",
+    'name': "new_timesheet",
 
     'summary': "Short (1 phrase/line) summary of the module's purpose",
 
@@ -31,9 +31,6 @@ Long description of module's purpose
         'views/helpdesk_ticket_views.xml',
     ],
 
-    # only loaded in demonstration mode
-    'demo': [
-    ],
     'license': 'OPL-1',
     'installable': True,
 }
