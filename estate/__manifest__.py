@@ -3,7 +3,7 @@
     'name': "Real Estate Tutorial",
 
     # any module necessary for this one to work correctly
-    'depends': ['base'], 
+    'depends': ['base', 'mail'], 
 
     'demo': [
         'demo/demo.xml',

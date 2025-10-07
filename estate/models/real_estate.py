@@ -5,6 +5,7 @@ from dateutil.relativedelta import relativedelta
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Estate Property'
     _order = 'sequence, id desc'
     _sql_constraints = [

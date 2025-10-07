@@ -94,6 +94,7 @@
                             </notebook>
                         </sheet>
                     </sheet>
+                    <chatter/>
                 </form>
             </field>
         </record>
