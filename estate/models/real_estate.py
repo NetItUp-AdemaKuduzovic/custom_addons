@@ -86,10 +86,10 @@ class EstateProperty(models.Model):
             rec.state = 'cancelled'
 
     @api.ondelete(at_uninstall=False)
-    def _check_property_delete(self):
+    def _property_delete(self):
         for rec in self:
             if rec.state not in ['new', 'cancelled']:
-                raise UserError('You cannot delete a property that is not new or cancelled.')
+                raise UserError("Can not delete property that has some offers connected to it.")
             
     @api.onchange("date_availability")
     def _onchange_date_availability(self):
