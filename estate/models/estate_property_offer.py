@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 from datetime import timedelta
 
 class EstatePropertyOffer(models.Model):
@@ -41,15 +42,18 @@ class EstatePropertyOffer(models.Model):
 
     @api.constrains('expected_price')
     def action_accept_offer(self):
-        for rec in self:
-            if rec.price >= 9/10 * rec.property_id.expected_price:
-                rec.status = 'accepted'
-                rec.property_id.state = 'offer_accepted'
-                rec.property_id.selling_price = rec.price
-                rec.property_id.buyer_id = rec.partner_id
-                return True
-            else:
-                raise models.ValidationError('The offer must be at least 90% of the expected price.')
+        self.ensure_one()
+        if "accepted" in self.property_id.offer_ids.mapped('status'):
+            raise UserError("One offer was already accepted.")
+
+        if self.price >= 9/10 * self.property_id.expected_price:
+            self.status = 'accepted'
+            self.property_id.state = 'offer_accepted'
+            self.property_id.selling_price = self.price
+            self.property_id.buyer_id = self.partner_id
+            return True
+        else:
+            raise models.ValidationError('The offer must be at least 90% of the expected price.')
 
     @api.model_create_multi
     def create(self, vals_list):
