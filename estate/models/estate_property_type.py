@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class EstatePropertyType(models.Model):
     _name = 'estate.property.type'
@@ -10,6 +10,12 @@ class EstatePropertyType(models.Model):
 
     property_ids = fields.One2many('estate.property', 'property_type_id', string='Types')
     name=fields.Char(required=True)
+    property_count = fields.Integer(compute="_compute_property_count")
+
+    @api.depends("property_ids")
+    def _compute_property_count(self):
+        for rec in self: 
+            rec.property_count = len(rec.property_ids)
 
     def action_open_property_ids(self):
         return {
