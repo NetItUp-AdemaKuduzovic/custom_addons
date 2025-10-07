@@ -5,13 +5,16 @@
             <field name="model">estate.property.type</field>
             <field name="arch" type="xml">
                 <form>
-                    <!-- <sheet>
-                        <div class="oe_button_box" name="button_box">
-                            <button class="oe_stat_button" name="action_open_offers"
-                                    type="object" string="Properties" icon="fa-list"/>
-                        </div>
-                    </sheet> -->
                     <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" 
+                                    name="action_open_property_ids"
+                                    type="object" 
+                                    icon="fa-list">
+                                    <span>Properties:</span>
+                                    <field name="property_count" widget="line_count" />
+                            </button>
+                        </div>
                         <h2>
                             <field name="name"></field>
                         </h2>
