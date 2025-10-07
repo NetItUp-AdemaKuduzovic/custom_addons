@@ -1,7 +1,7 @@
 from odoo import models, fields, api
 from datetime import timedelta
 
-class estatePropertyOffer(models.Model):
+class EstatePropertyOffer(models.Model):
     _name = 'estate.property.offer'
     _description = 'Estate Property Offer'
     _order = 'price desc'
@@ -19,6 +19,7 @@ class estatePropertyOffer(models.Model):
 
     partner_id = fields.Many2one('res.partner', string='Partner', required=True)
     property_id = fields.Many2one('estate.property', string='Property', required=True)
+    property_type_id = fields.Many2one(related='property_id.property_type_id', store=True)
 
     @api.depends('validity')
     def _compute_deadline_date(self): 
@@ -49,3 +50,17 @@ class estatePropertyOffer(models.Model):
                 return True
             else:
                 raise models.ValidationError('The offer must be at least 90% of the expected price.')
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if 'property_id' in vals:
+                property_rec = self.env['estate.property'].browse(vals['property_id'])
+                property_rec.state = 'offer_received'
+                
+                existing_offers = property_rec.offer_ids.mapped('price')
+                max_existing_price = max(existing_offers, default=0.0)
+                
+                if vals.get('price', 0) <= max_existing_price:
+                    raise models.ValidationError('The offer price must be higher than the existing offers.')
+        return super(EstatePropertyOffer, self).create(vals)
