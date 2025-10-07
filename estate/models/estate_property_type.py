@@ -20,8 +20,8 @@ class EstatePropertyType(models.Model):
     def action_open_property_ids(self):
         return {
             "name": "Related properties",
-            "type": "ir.actions.act.window",
-            "view_mode": "list, form", 
+            "type": "ir.actions.act_window",
+            "view_mode": "list,form", 
             "res_model": "estate.property",
             "target": "current",
             "domain": [("property_type_id", "=", self.id)],
