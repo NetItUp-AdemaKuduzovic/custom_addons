@@ -2,7 +2,7 @@ from odoo import fields, models, api
 from odoo.exceptions import UserError
 from dateutil.relativedelta import relativedelta
 
-class estateProperty(models.Model):
+class EstateProperty(models.Model):
     _name = 'estate.property'
     _description = 'Estate Property'
     _order = 'sequence, id desc'
@@ -23,7 +23,7 @@ class estateProperty(models.Model):
     garage = fields.Boolean()
     garden = fields.Boolean()
     garden_area = fields.Integer(string='Garden Area (sqm)')
-    active = fields.Boolean(default=True)
+    active = fields.Boolean(default=True, invisible=True)
     total_area = fields.Float(compute='_compute_total_area', string='Total Area (sqm)')
     best_offer = fields.Float(compute='_compute_best_offer')
     sequence = fields.Integer(string='Sequence', default=1, help='Used to order the properties list view. Lower is better.')
@@ -42,7 +42,7 @@ class estateProperty(models.Model):
         ('cancelled', 'Cancelled'),
     ],'State', required=True,copy=False,default='new')
 
-    property_type_id = fields.Many2one('estate.property.type', string='Property Type', options={'can_create': False, 'can_write': False})
+    property_type_id = fields.Many2one('estate.property.type', string='Property Type')
     buyer_id = fields.Many2one('res.partner',string='Buyer', copy=False)
     seller_id = fields.Many2one('res.users', string='Salesman', default=lambda self: self.env.user)
     tag_ids = fields.Many2many('estate.property.tag', string='Tags')
@@ -78,6 +78,12 @@ class estateProperty(models.Model):
             if rec.state == 'sold' or rec.state == 'offer_accepted':
                 raise UserError('Sold properties cannot be cancelled')
             rec.state = 'cancelled'
+
+    @api.ondelete(at_uninstall=False)
+    def _check_property_delete(self):
+        for rec in self:
+            if rec.state not in ['new', 'cancelled']:
+                raise UserError('You cannot delete a property that is not new or cancelled.')
 
 
     # def _get_default_seller_id1(self):
