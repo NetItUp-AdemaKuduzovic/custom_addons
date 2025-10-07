@@ -1,5 +1,6 @@
+from datetime import date
 from odoo import fields, models, api
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 from dateutil.relativedelta import relativedelta
 
 class EstateProperty(models.Model):
@@ -23,7 +24,7 @@ class EstateProperty(models.Model):
     garage = fields.Boolean()
     garden = fields.Boolean()
     garden_area = fields.Integer(string='Garden Area (sqm)')
-    active = fields.Boolean(default=True, invisible=True)
+    active = fields.Boolean(default=True)
     total_area = fields.Float(compute='_compute_total_area', string='Total Area (sqm)')
     best_offer = fields.Float(compute='_compute_best_offer')
     sequence = fields.Integer(string='Sequence', default=1, help='Used to order the properties list view. Lower is better.')
@@ -60,14 +61,19 @@ class EstateProperty(models.Model):
 
     @api.onchange('garden')
     def _onchange_garden(self):
-        if self.garden:
-            self.garden_area = 10
-            self.garden_orientation = 'north'
-        else:
-            self.garden_area = 0
-            self.garden_orientation = False
+        for rec in self: 
+            if rec.garden:
+                rec.garden_area = 10
+                rec.garden_orientation = 'north'
+            else:
+                rec.garden_area = 0
+                rec.garden_orientation = False
 
     def action_set_sold(self):
+        # self.ensure_one()
+        # if self.state == "cancelled":
+        #     raise UserError('Cancelled properties cannot be sold')
+        # self.state = "sold"
         for rec in self:
             if rec.state == 'cancelled':
                 raise UserError('Cancelled properties cannot be sold')
@@ -98,3 +104,9 @@ class EstateProperty(models.Model):
 
     # def _get_default_seller_id1(self):
     #     return self.env.user
+
+    @api.constrains("selling_price")
+    def _check_constraint(self):
+        for estate in self: 
+            if estate.selling_price < 5000: 
+                raise ValidationError("Selling price must be bigger then 5000.")
