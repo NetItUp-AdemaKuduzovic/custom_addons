@@ -1,0 +1,12 @@
+<templates>
+    <t t-name="learning_owl.child" owl="1">
+        <t t-slot="default"/>
+        <p><t t-out="props.title"/></p>
+        <h1>Counter: <t t-out="props.counter"/></h1>
+        <ol>
+            <t t-foreach="props.list" t-as="item" t-key="item_index">
+                <li t-esc="item"/>
+            </t>
+        </ol>
+    </t>
+</templates>

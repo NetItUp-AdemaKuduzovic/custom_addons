@@ -1,0 +1,11 @@
+<templates>
+
+    <t t-name="learning_owl.example_owl_template" owl="1">
+        <p>This is an example of an owl template.</p>
+        <button class="btn btn-primary" t-on-dblclick="alertMessage" t-on-click="increment"> Click me </button>
+        <Child title="'test mc'"  list="['Odoo', 'learning', 'tutorial']" counter="this.state.counter">
+            <span>This is a slot</span>
+        </Child>
+    </t>
+
+</templates>
