@@ -84,7 +84,17 @@ class EstateProperty(models.Model):
         for rec in self:
             if rec.state not in ['new', 'cancelled']:
                 raise UserError('You cannot delete a property that is not new or cancelled.')
-
+            
+    @api.onchange("date_availability")
+    def _onchange_date_availability(self):
+        for estate in self: 
+            if estate.date_availability < date.today():
+                return {
+                    "warning": {
+                        "title": "Warning", 
+                        "message": "You are about to change data availability to date in the past."
+                    }
+                }
 
     # def _get_default_seller_id1(self):
     #     return self.env.user
