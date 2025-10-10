@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+niu_timbrature.access_niu_attendance,access_niu_attendance,niu_timbrature.model_niu_attendance,base.group_user,1,1,1,1
+niu_timbrature.access_niu_stamping,access_niu_stamping,niu_timbrature.model_niu_stamping,base.group_user,1,1,1,1
