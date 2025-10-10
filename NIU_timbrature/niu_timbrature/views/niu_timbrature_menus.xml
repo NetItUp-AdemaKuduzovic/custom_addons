@@ -1,16 +1,24 @@
 <?xml version="1.0"?>
-    <odoo>
-        <data>
-                <!-- Root menu -->
-                <menuitem id="niu_timbrature_menu_root_attendances"
-                    name="Attendances"
-                    sequence="10"/>
+<odoo>
+    <data>
+        <!-- Root menu -->
+        <menuitem id="niu_timbrature_menu_root"
+            name="Attendances"
+            sequence="10"/>
 
-                <!-- Stampings submenu -->
-                <menuitem id="niu_timbrature_first_level_menu_stampings"
-                    name="Stampings"
-                    parent="niu_timbrature_menu_root_attendances"
-                    sequence="10"/>
+        <!-- Attendances child menu (opens niu.attendance list) -->
+        <menuitem id="niu_timbrature_menu_attendances"
+            name="Attendances"
+            parent="niu_timbrature_menu_root"
+            action="niu_timbrature.niu_attendance_action"
+            sequence="5"/>
 
-        </data>
-    </odoo>
+        <!-- Stampings submenu (opens niu.stamping list) -->
+        <menuitem id="niu_timbrature_first_level_menu_stampings"
+            name="Stampings"
+            parent="niu_timbrature_menu_root"
+            action="niu_timbrature.niu_stamping_action"
+            sequence="10"/>
+
+    </data>
+</odoo>
