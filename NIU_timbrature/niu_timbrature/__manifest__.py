@@ -8,6 +8,7 @@
     Description text
     """,
     'data': [
+        'security/ir.model.access.csv',
         'data/cron.xml',
         'views/niu_stamping_views.xml',
         'views/niu_attendance_views.xml',
