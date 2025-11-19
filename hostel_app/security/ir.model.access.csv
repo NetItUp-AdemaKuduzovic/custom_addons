@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hostel_manager_id,access.hostel.manager,hostel_app.model_hostel_hostel,hostel_app.group_hostel_manager,1,1,1,1
+access_hostel_user_id,access.hostel.user,hostel_app.model_hostel_hostel,hostel_app.group_hostel_user,1,0,0,0
+access_hostel_room_manager_id,access.hostel.room.manager,hostel_app.model_hostel_room,hostel_app.group_hostel_manager,1,1,1,1
+access_hostel_room_user_id,access.hostel.room.user,hostel_app.model_hostel_room,hostel_app.group_hostel_user,1,0,0,0
+access_hostel_student_manager_id,access.hostel.student.manager,hostel_app.model_hostel_student,hostel_app.group_hostel_manager,1,1,1,1
+access_hostel_student_user_id,access.hostel.student.user,hostel_app.model_hostel_student,hostel_app.group_hostel_user,1,0,0,0
+access_hostel_amenities_manager_id,access.hostel.amenities.manager,hostel_app.model_hostel_amenities,hostel_app.group_hostel_manager,1,1,1,1
+access_hostel_amenities_user_id,access.hostel.amenities.user,hostel_app.model_hostel_amenities,hostel_app.group_hostel_user,1,0,0,0
+access_hostel_categ_manager_id,access.hostel.category.manager,hostel_app.model_hostel_category,hostel_app.group_hostel_manager,1,1,1,1
+access_hostel_categ_user_id,access.hostel.category.user,hostel_app.model_hostel_category,hostel_app.group_hostel_user,1,0,0,0
