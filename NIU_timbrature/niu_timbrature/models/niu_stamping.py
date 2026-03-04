@@ -1,12 +1,14 @@
 from odoo import models, fields, api
-from datetime import datetime, date, timedelta
+from datetime import datetime, timedelta
+import pytz
 
 class NiuStamping(models.Model):
     _name = 'niu.stamping'
     _description = 'Niu Stamping'
+    _order = "stamping_timestamp desc"
 
     active = fields.Boolean(string="Active", default=True)
-    stamping_timestamp = fields.Datetime(string='Timestamp', required=True, default = fields.Date.today())
+    stamping_timestamp = fields.Datetime(string='Timestamp', required=True, default=lambda self: fields.Datetime.now())
 
     employee_id = fields.Many2one('hr.employee', string='Employee', required=True)
     badge_id = fields.Char(string="Badge ID", store=True)
@@ -15,7 +17,20 @@ class NiuStamping(models.Model):
     stamping_direction = fields.Selection([
         ('in', 'Check-In'),
         ('out', 'Check-Out')
-    ], string='Stamping Direction', required=True)
+    ], string='Stamping Direction', required=False)
+    hour = fields.Char(string="Stamping time", compute="_compute_time_only")
+
+    @api.depends('stamping_timestamp')
+    def _compute_time_only(self):
+        user_tz = self.env.user.tz or 'UTC'
+        tz = pytz.timezone(user_tz)
+        for record in self: 
+            if record.stamping_timestamp:
+                localized_dt = pytz.utc.localize(record.stamping_timestamp).astimezone(tz)
+                record.hour = localized_dt.strftime('%H:%M:%S')
+
+            else: 
+                record.hour = ''
 
     def _get_employee_id(self): 
         # Based on badge-id used for stamping: get employee_id
@@ -35,6 +50,15 @@ class NiuStamping(models.Model):
             ('employee_id', '=', vals.get('employee_id'))
         ])
         vals['niu_attendance_id'] = niu_attendance_id.id if niu_attendance_id else False
-        return super().create(vals)
 
-    
+        number_of_stampings = self.search_count([
+            ('employee_id', '=', vals.get('employee_id')),
+            ('stamping_timestamp', '>=', datetime.strptime(vals.get('stamping_timestamp'), "%Y-%m-%d %H:%M:%S").date()),
+            ('stamping_timestamp', '<=', datetime.strptime(vals.get('stamping_timestamp'), "%Y-%m-%d %H:%M:%S").date() + timedelta(days=1))
+        ])
+        if number_of_stampings % 2 == 0:
+            vals['stamping_direction'] = 'in'
+        else:
+            vals['stamping_direction'] = 'out'
+        
+        return super().create(vals)

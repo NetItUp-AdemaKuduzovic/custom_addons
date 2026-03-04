@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+    <record id="view_hostel_room_form_view" model="ir.ui.view">
+        <field name="name">hostel.room.form.view</field>
+        <field name="model">hostel.room</field>
+        <field name="arch" type="xml">
+            <form string="Hostel Room">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="room_number"/>
+                            <field name="floor_number"/>
+                            <field name="rent_amount"/>
+                            <field name="currency_id"/>
+                            <field name="availability"/>
+                        </group>
+                        <group>
+                            <button name="make_available" string="Make Available" type="object"/>
+                            <button name="make_closed" string="Make Borrowed" type="object"/>
+                            <field name="state"/>
+                            <field name="admission_date"/>
+                            <field name="discharge_date"/>
+                            <field name="student_per_room"/>
+                        </group>
+                        <group>
+                            <field name="student_ids"/>
+                            <field name="hostel_amenities_ids"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
     <record id="action_hostel_room" model="ir.actions.act_window">
         <field name="name">Hostel Room</field>
         <field name="type">ir.actions.act_window</field>

@@ -1,10 +1,25 @@
 <odoo noupdate="1">
     <record id="ir_cron_generate_attendances" model="ir.cron">
         <field name="name">Generate Daily Attendances</field>
+        <field name="model_id" ref="model_niu_attendance"/>
+        <field name="state">code</field>
+        <field name="code">model._generate_attendances()</field>
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
+        <field name="nextcall"
+                  eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 22:00:00')"/>
+        <field name="priority">1</field>
+    </record>
+
+    <record id="ir_cron_validate_attendances" model="ir.cron">
+        <field name="name">Check Daily Attendances</field>
         <field name="model_id" ref="model_niu_attendance"/>
-        <field name="code">model._generate_attendances()</field>
         <field name="state">code</field>
+        <field name="code">model._check_attendance_validity()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="nextcall"
+                  eval="(DateTime.now() + timedelta(days=1)).strftime('%Y-%m-%d 21:00:00')"/>
+        <field name="priority">1</field>
     </record>
 </odoo>

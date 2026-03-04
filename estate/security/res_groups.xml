@@ -1,5 +1,6 @@
 <odoo>
     <record id="estate_manager" model="res.groups">
         <field name="name">Estate Managers</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
 </odoo>

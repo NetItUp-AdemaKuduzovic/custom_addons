@@ -5,14 +5,48 @@
         <field name="name">niu.attendance.view.list</field>
         <field name="model">niu.attendance</field>
         <field name="arch" type="xml">
-            <list>
+            <list decoration-danger="not is_valid">
                 <field name="employee_id" widget="many2one_avatar_user"/>
                 <field name="attendance_date"/>
-                <field name="first_in"/>
-                <field name="first_out"/>
-                <field name="second_in"/>
-                <field name="second_out"/>
+                <field name="is_valid"/>
             </list>
+        </field>
+    </record>
+
+    <!--Attendance Form View-->
+    <record id="niu_attendance_form_view" model="ir.ui.view">
+        <field name="name">niu.attendance.view.form</field>
+        <field name="model">niu.attendance</field>
+        <field name="arch" type="xml">
+            <form string="Attendances">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="attendance_date"/>
+                            <field name="employee_id" widget="many2one_avatar_user"/>
+                        </group>
+                        <group> 
+                            <field name="badge_id"/>
+                            <field name="is_valid"/>
+                        </group>
+                    </group>
+
+                    <div class="mt-4"/>
+
+                    <notebook>
+                        <page string="Stampings">
+                            <field name="niu_stamping_ids">
+                                <list editable="bottom" create="false" delete="false">
+                                    <field name="hour"/>
+                                    <field name="stamping_direction"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <!-- Chatter -->
+                <chatter/>
+            </form>
         </field>
     </record>
 
