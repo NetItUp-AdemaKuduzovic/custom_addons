@@ -15,14 +15,14 @@
     "depends": [
         "base",
         "web", 
-        "web_studio"
+        "web_studio",
     ],
     "data": [
-        'security/ir.model.access.csv',
-        'views/niu_timestamp_views.xml'
     ],
     "assets": {
         'web.assets_backend': [
+            'disable_studio_project/static/src/systray_item/systray_item.js',
+            'disable_studio_project/static/src/systray_item/views/list/list_renderer_desktop.js'
         ],
     },
 }
