@@ -16,13 +16,16 @@
         "base",
         "web", 
         "web_studio",
+        "worksheet",
     ],
     "data": [
     ],
     "assets": {
         'web.assets_backend': [
+            'disable_studio_project/static/src/disable_studio.js',
             'disable_studio_project/static/src/systray_item/systray_item.js',
-            'disable_studio_project/static/src/systray_item/views/list/list_renderer_desktop.js'
+            'disable_studio_project/static/src/systray_item/views/list/list_renderer_desktop.js',
+            'disable_studio_project/static/src/open_studio_button_widget_remove.xml'
         ],
     },
 }
