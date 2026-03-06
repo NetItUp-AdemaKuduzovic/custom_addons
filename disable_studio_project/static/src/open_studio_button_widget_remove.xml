@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="worksheet.OpenStudioWidget" t-inherit-mode="extension">
+        <xpath expr="//button[@t-on-click.stop='onClick']" position="replace"/>
+    </t>
+</templates>
