@@ -1,17 +1,8 @@
 /** @odoo-module **/
 
-import { registry } from "@web/core/registry";
+import * as studioSystrayModule from '@web_studio/systray_item/systray_item';
+import { patch } from "@web/core/utils/patch";
 
-const systray = registry.category("systray");
-
-const original = systray.get("StudioSystrayItem");
-
-systray.add("StudioSystrayItem", {
-    ...original,
-    setup() {
-        super.setup();
-    },
-    // Use this if: optionally show only in debug mode for system users:
-    // isDisplayed: () => odoo.debug && user.isSystem
-    isDisplayed: () => false
-}, { force: true });
+patch(studioSystrayModule.systrayItem, {
+    isDisplayed: () => false,
+});

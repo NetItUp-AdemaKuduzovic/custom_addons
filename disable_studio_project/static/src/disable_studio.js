@@ -8,10 +8,8 @@ registry.category("services").add(
         start() {
             return {
                 open: async () => {},
-                close: async () => {},
-                ready: Promise.resolve(),
+                leave: async () => {},
                 isStudioEditable: () => false,
-                isStudioActive: () => false,
             };
         },
     },
